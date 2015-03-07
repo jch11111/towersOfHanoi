@@ -1,0 +1,26 @@
+<script language="javascript">
+    //towers of hanoi
+    //curt hill
+    //Mar/7/2015
+
+    var towers = function (n, begin, aux, end, steps) {
+        if (n === 0) return;
+        steps.stepCount++
+        
+        towers(n - 1, begin, end, aux, steps);
+        steps.step += begin + " => " + end + "\n";
+        towers(n - 1, aux, begin, end, steps);
+    };
+
+    var Steps = function () {
+        this.step = "\n";
+        this.stepCount = 0;
+    }
+
+    var _steps = new Steps();
+    towers(2, "a", "b", "c", _steps);
+    
+    console.log("Number of steps: " + _steps.stepCount);
+    console.log(_steps.step);  //n^2 - 1
+
+</script>
